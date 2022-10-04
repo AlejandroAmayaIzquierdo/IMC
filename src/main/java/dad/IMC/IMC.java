@@ -1,16 +1,21 @@
 package dad.IMC;
 
 public class IMC {
-	public enum values{
+	public enum Clasificacion{
 		Bp("Bajo peso"),
 		N("Normal"),
 		Sp("Sobrepeso"),
 		Ob("Obeso");
 		
-		String text;
+		private String text;
 		
-		private values(String text) {
+		private Clasificacion(String text) {
 			this.text = text;
+		}
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return text;
 		}
 	}
 	public static Double getImc(Double peso,Double altura) {
@@ -18,20 +23,16 @@ public class IMC {
 	}
 	
 	public static String getClasificacion(double d) {
-		String toReturn = "";
 		if(d > 0) {
-			toReturn = values.Bp.text;
+			return Clasificacion.Bp.toString();
 		}
-		if(d >= 18.5 && d < 25) {
-			toReturn = values.N.text;
+		else if(d >= 18.5 && d < 25) {
+			return Clasificacion.N.toString();
 		}
-		if(d >= 25 && d < 30) {
-			toReturn = values.Sp.text;
+		else if(d >= 25 && d < 30) {
+			return Clasificacion.Sp.toString();
 		}
-		if(d >= 30) {
-			toReturn = values.Ob.text;
-		}
+		return Clasificacion.Ob.toString();
 		
-		return toReturn;
 	}
 }

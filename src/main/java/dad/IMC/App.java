@@ -2,6 +2,7 @@ package dad.IMC;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleExpression;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -35,11 +36,23 @@ public class App extends Application {
 	DoubleProperty alturaValue;
 	
 	
+	NumberStringConverter nsc = new  NumberStringConverter() {
+		@Override
+		public Number fromString(String value) {
+			try {
+				return super.fromString(value);
+			} catch (Exception e) {
+				return 0;
+			}
+		}
+	};
+	
+	
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		before();
+		initUI();
 		
 		binding();
 		
@@ -50,7 +63,7 @@ public class App extends Application {
 		stage.show();
 		
 	}
-	public void before() {
+	public void initUI() {
 		peso = new Label("Peso:");
 		kg = new Label("Kg");
 		
@@ -91,28 +104,12 @@ public class App extends Application {
 		pesoValue = new SimpleDoubleProperty();
 		alturaValue = new SimpleDoubleProperty();
 		imcValue = new SimpleDoubleProperty();
-		pesoTextField.textProperty().bindBidirectional(pesoValue, new  NumberStringConverter() {
-			@Override
-			public Number fromString(String value) {
-				try {
-					return super.fromString(value);
-				} catch (Exception e) {
-					return 0;
-				}
-			}
-		});	
-		alturaTextField.textProperty().bindBidirectional(alturaValue, new  NumberStringConverter() {
-			@Override
-			public Number fromString(String value) {
-				try {
-					return super.fromString(value).doubleValue()/100;
-				} catch (Exception e) {
-					return 0;
-				}
-			}
-		});
+		pesoTextField.textProperty().bindBidirectional(pesoValue,nsc);	
+		alturaTextField.textProperty().bindBidirectional(alturaValue,nsc);
 		
-		imcValue.bind(pesoValue.divide(alturaValue.multiply(alturaValue)));
+		DoubleExpression alturaMetros = alturaValue.divide(100);
+		
+		imcValue.bind(pesoValue.divide(alturaMetros.multiply(alturaMetros)));
 		
 		imcValue.addListener((o,ov,nv) -> {
 			if(nv.doubleValue() != Double.POSITIVE_INFINITY) {
