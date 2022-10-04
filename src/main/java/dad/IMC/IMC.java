@@ -14,7 +14,6 @@ public class IMC {
 		}
 		@Override
 		public String toString() {
-			// TODO Auto-generated method stub
 			return text;
 		}
 	}
@@ -23,7 +22,7 @@ public class IMC {
 	}
 	
 	public static String getClasificacion(double d) {
-		if(d > 0) {
+		if(d < 18.5) {
 			return Clasificacion.Bp.toString();
 		}
 		else if(d >= 18.5 && d < 25) {

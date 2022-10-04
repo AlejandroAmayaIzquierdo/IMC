@@ -69,7 +69,6 @@ public class App extends Application {
 		
 		pesoTextField = new TextField();
 		pesoTextField.setPromptText("Introduce tu peso");
-		pesoTextField.setFocusTraversable(false);
 		
 		
 		pesoRoot = new HBox();
@@ -82,7 +81,6 @@ public class App extends Application {
 		
 		alturaTextField = new TextField();
 		alturaTextField.setPromptText("Introduce tu Altura");
-		alturaTextField.setFocusTraversable(false);
 		
 		alturaRoot = new HBox();
 		alturaRoot.getChildren().addAll(altura,alturaTextField,cm);
