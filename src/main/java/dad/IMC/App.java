@@ -113,7 +113,7 @@ public class App extends Application {
 			if(nv.doubleValue() != Double.POSITIVE_INFINITY) {
 				String newValue = String.format("%.2f", nv.doubleValue());
 				imc.setText("IMC: " + newValue);
-				resultado.setText(IMC.getClasificacion(nv.doubleValue()));
+				resultado.setText(IMC.getIMC(nv.doubleValue()).toString());
 			}
 		});
 	}
