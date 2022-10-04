@@ -1,0 +1,14 @@
+
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.m2e.core.prefs
+.project
+.classpath
+target/classes/dad/IMC/App$1.class
+target/classes/dad/IMC/App$2.class
+target/classes/dad/IMC/App.class
+target/classes/dad/IMC/IMC$values.class
+target/classes/dad/IMC/IMC.class
+target/classes/dad/IMC/Main.class
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
